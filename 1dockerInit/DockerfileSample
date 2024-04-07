@@ -1,0 +1,35 @@
+FROM ubuntu:16.04
+
+RUN apt update && apt install -y \
+    arp-scan \
+    iputils-ping \
+    iproute2
+
+COPY webapp /
+
+CMD [ "/bin/bash" ]
+
+--- # for volume
+
+FROM scratch
+COPY writable /
+CMD [ "/writable", "/logs/myapp" ] #set default to run binary "/writable" and the path"/logs/myapp" where the data to be written to (our volume)
+
+--- # for tagging
+FROM ubuntu:16.04
+RUN mkdir -p /demo && echo "Version 1" > /demo/message
+CMD [ "/bin/cat","demo/message" ]
+# # 
+# FROM ubuntu:16.04:
+# This line specifies the base image for your Docker image. In this case, it uses the Ubuntu 16.04 base image.
+# The FROM instruction is always the first line in a Dockerfile and sets the foundation for subsequent instructions.
+# RUN mkdir -p /demo && echo "Version 1" > /demo/message:
+# The RUN instruction executes commands during the image build process.
+# Here, it creates a directory named /demo using mkdir -p.
+# Then it echoes the string “Version 1” into a file named message within the /demo directory.
+# This step is performed within the image, not on your host system.
+# CMD [ "/bin/cat", "demo/message" ]:
+# The CMD instruction specifies the default command to run when a container is started from the image.
+# In this case, it runs the /bin/cat demo/message command.
+# When you create a container from this image, it will automatically execute this command, which reads the contents of the message file.
+FROM tag_demo:v2
