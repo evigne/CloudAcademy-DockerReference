@@ -1,5 +1,3 @@
-# example file using extension fields
-# https://github.com/cloudacademy/docker-compose-training/blob/master/3-extension-fields.yml
 version: '3.4'
 x-logging: &default-logging
   options:

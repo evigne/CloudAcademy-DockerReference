@@ -2,6 +2,7 @@
 
 - [Docker Compose Training Github](https://github.com/cloudacademy/docker-compose-training)
   [github](https://github.com/cloudacademy/docker-compose-training/tree/master/multi-env)
+  [DockerComposeDOC](https://docs.docker.com/compose/)
 
 > ## Before Docker compose
 
@@ -17,9 +18,9 @@
 - docker volume rm serviceB_volume
 - docker network rm app_network
 
-> ## Compose Commends
+> ## Compose Commands
 
-- docker-compose #list all possible commends
+- docker-compose #list all possible commands
 - docker-compose -f compose-file.yaml up -d #compose the file
 - YAML is Data Serialization language (.yaml or .yml)
 - we can use JSON or YAML for docker compose
@@ -36,7 +37,7 @@
 
 - starts with '#'
 
-> Compose file
+> Compose file YAML file
 
 - version: '3' # compose relese version file version
 - service: services in the application, nested mapping of services under the services key. (eg: web, redis),keys below:
@@ -46,6 +47,28 @@
   - environment(-e,--env)
   - logging(--log-driver)
   - security_opt
-  - command(CMD) it can either written in ['commend', 'commend'] or as a list `- command` \n `- command`
+  - command(CMD) it can either written in ['command', 'command'] or as a list `- command` \n `- command`
   - depends_on: list the service that the service depends on(first dependent start before the service start)
   - links(express dependencies)
+  - Network
+  - Extension Fields - Reuse configuration fragments =>check this only available from verison 3.4 **\***
+
+> Compose File Commands
+
+- docker-compose [option] [command] [args]
+- Connects to Docker Deamon on the host by default
+- - can connect to remote hosts with -H
+- - secure remote connections wiht --tls options
+- looks for docker-compose.(yml | yaml), or specify file name with -f
+- Projects to represent isolated app
+- - default uses directory as project name
+- - use -p to specify custom names
+
+> docker-compose command
+
+- docker commands
+- - build, config, create, events, exec, images , kill,logs, pause, port, ps, pull, push, restart, rm ,run, start
+- - stop, top, unpause, version
+- docker compose commands
+- - up => create newtork and named volumes, build, creates, starts and attaches to service container
+- - down => removes service container, but leaves volumes and images by default

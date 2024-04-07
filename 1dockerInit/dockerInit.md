@@ -1,4 +1,4 @@
-# Commends used
+# Commands used
 
 - sudo docker run -it ubuntu /bin/bash #i interactive t sudo tty
 
@@ -14,6 +14,8 @@
 - ip addr show #replacement for ifconfig
 
 > ## Detach from container without stopping ctrl+p & ctrl+q
+
+> ## ctrl+z to close the terminal without stopping the containers
 
 > ## Port Mapping
 
